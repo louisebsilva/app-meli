@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import logo from '../../images/logo.png';
 import iconSearch from '../../images/icons-search.svg';
 import './styles.scss';
@@ -25,12 +26,11 @@ const Header = () => {
           onChange={handleSearchChange}
           value={searchInput}
         />
-        <button
-          type="submit"
-          className="search-button"
-          data-testid="search-button"
-        >
-          <img src={iconSearch} data-testid="icon-search" />
+
+        <button className="search-button" data-testid="search-button">
+          <Link to="/items">
+            <img src={iconSearch} data-testid="icon-search" />
+          </Link>
         </button>
       </nav>
     </header>
