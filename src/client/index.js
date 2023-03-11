@@ -9,3 +9,7 @@ const api = axios.create({
 export const getProductList = async (textSearch) => {
   return await api.get(`${baseUrl}/items?q=${textSearch}`);
 };
+
+export const getOneItem = async (textSearch) => {
+  return await api.get(`${baseUrl}/items/${textSearch}`);
+};

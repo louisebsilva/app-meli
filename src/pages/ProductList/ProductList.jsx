@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import ProductDetail from '../ProductDetail/ProductDetail';
+import ProductDetail from '../Product/Product';
 import { getProductList } from '../../client';
+import './styles.scss';
 
 const ProductList = () => {
   const location = useLocation();
@@ -26,9 +27,11 @@ const ProductList = () => {
   }, []);
 
   return (
-    <section data-testid="product-list">
-      {renderProductList(productList)}
-    </section>
+    <main className="product-list" data-testid="product-list">
+      <section className="product-section">
+        {renderProductList(productList)}
+      </section>
+    </main>
   );
 };
 
