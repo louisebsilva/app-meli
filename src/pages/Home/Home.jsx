@@ -1,5 +1,3 @@
-import Header from '../../components/Header/Header';
-
-const Home = () => <Header />;
+const Home = () => <>{/* TODO: Show products  */}</>;
 
 export default Home;

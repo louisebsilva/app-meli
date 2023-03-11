@@ -28,7 +28,10 @@ const Header = () => {
         />
 
         <button className="search-button" data-testid="search-button">
-          <Link to="/items">
+          <Link
+            to={`/items?q=${searchInput}`}
+            state={{ querySearch: searchInput }}
+          >
             <img src={iconSearch} data-testid="icon-search" />
           </Link>
         </button>
