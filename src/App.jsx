@@ -1,7 +1,7 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Home from './pages/Home/Home';
 import Header from './components/Header/Header';
-import ProductList from './pages/ProductList/ProductList';
+import ProductsList from './pages/ProductsList/ProductsList';
 import Product from './pages/Product/Product';
 
 function App() {
@@ -10,7 +10,7 @@ function App() {
       <Header />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/items" element={<ProductList />} />
+        <Route path="/items" element={<ProductsList />} />
         <Route path="/items/:id" element={<Product />} />
       </Routes>
     </BrowserRouter>

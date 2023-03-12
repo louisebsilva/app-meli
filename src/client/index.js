@@ -6,7 +6,7 @@ const api = axios.create({
   baseURL: baseUrl,
 });
 
-export const getProductList = async (textSearch) => {
+export const getProductsList = async (textSearch) => {
   return await api.get(`${baseUrl}/items?q=${textSearch}`);
 };
 
