@@ -1,8 +1,9 @@
 import React from 'react';
 import { useLocation } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import Product from '../Product/Product';
 import useProductsListService from './hooks/useProductsListService';
+import Product from '../Product/Product';
+import Loader from '../../components/Loader/Loader';
 import './styles.scss';
 
 const renderProductsList = (products) => {
@@ -16,7 +17,7 @@ const ProductsList = () => {
 
   return (
     <main className="product-list" data-testid="product-list">
-      {loading ? <div>Loading</div> : renderProductsList(productsList)}
+      {loading ? <Loader /> : renderProductsList(productsList)}
     </main>
   );
 };

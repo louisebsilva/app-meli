@@ -3,6 +3,7 @@ import { useLocation } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { getItemByID } from '../../client';
 import { formatPrice } from '../../utils/utils';
+import Loader from '../../components/Loader/Loader';
 import './styles.scss';
 
 const ProductDetail = () => {
@@ -27,11 +28,7 @@ const ProductDetail = () => {
   const renderProductDetails = () => {
     const { title, price, sold_quantity, condition, thumbnail } = details;
     if (loading) {
-      return <p>Loading</p>;
-    }
-
-    if (Object.keys(details).length === 0) {
-      return <p>Nothing found</p>;
+      return <Loader />;
     }
 
     return (
