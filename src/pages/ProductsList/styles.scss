@@ -1,6 +1,11 @@
 .product-list {
-    width: 70%;
+    width: 55%;
     background-color: #feffff;
     margin: auto;
-    padding: 30px;
+}
+
+@media (max-width: 600px) {
+    .product-list {
+        width: 95%;
+    }
 }

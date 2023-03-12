@@ -1,14 +1,12 @@
 import React from 'react';
 import { useLocation } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import ProductDetail from '../Product/Product';
+import Product from '../Product/Product';
 import useProductsListService from './hooks/useProductsListService';
 import './styles.scss';
 
 const renderProductsList = (products) => {
-  return products.map((data, index) => (
-    <ProductDetail data={data} key={index} />
-  ));
+  return products.map((data) => <Product data={data} key={data?.id} />);
 };
 
 const ProductsList = () => {
@@ -18,9 +16,7 @@ const ProductsList = () => {
 
   return (
     <main className="product-list" data-testid="product-list">
-      <section className="product-section">
-        {loading ? <div>Carregando</div> : renderProductsList(productsList)}
-      </section>
+      {loading ? <div>Carregando</div> : renderProductsList(productsList)}
     </main>
   );
 };
