@@ -1,21 +1,19 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import { formatPrice } from '../../utils/utils';
 import './styles.scss';
 
-const formatPrice = (price) => {
-  const currency = new Intl.NumberFormat('es-AR', {
-    style: 'currency',
-    currency: 'ARS',
-  });
-
-  return currency.format(price);
-};
-
 const Product = ({ data }) => {
-  const { thumbnail, price, title, address } = data;
+  const navigate = useNavigate();
+  const { id, thumbnail, price, title, address } = data;
 
   return (
-    <section className="product-section" data-testid="product-section">
+    <section
+      className="product-section"
+      data-testid="product-section"
+      onClick={() => navigate(`/items/${id}`)}
+    >
       <img
         className="thumbnail"
         data-testid="thumbnail"

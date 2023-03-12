@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import { BrowserRouter } from 'react-router-dom';
-import ProductDetail from './Product';
+import Product from './Product';
 
 const dataMock = {
   data: {
@@ -12,8 +12,8 @@ const dataMock = {
 };
 
 describe('Product component', () => {
-  it('should render ProductDetail page correctly', () => {
-    render(<ProductDetail data={dataMock} />, { wrapper: BrowserRouter });
+  it('should render Product page correctly', () => {
+    render(<Product data={dataMock} />, { wrapper: BrowserRouter });
     expect(screen.getByTestId('product-section')).toBeInTheDocument();
     expect(screen.getByTestId('thumbnail')).toBeInTheDocument();
     expect(screen.getByTestId('section-detail')).toBeInTheDocument();

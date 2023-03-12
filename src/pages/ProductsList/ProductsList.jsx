@@ -16,7 +16,7 @@ const ProductsList = () => {
 
   return (
     <main className="product-list" data-testid="product-list">
-      {loading ? <div>Carregando</div> : renderProductsList(productsList)}
+      {loading ? <div>Loading</div> : renderProductsList(productsList)}
     </main>
   );
 };
