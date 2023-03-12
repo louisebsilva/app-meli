@@ -10,6 +10,10 @@ export const getProductsList = async (textSearch) => {
   return await api.get(`${baseUrl}/items?q=${textSearch}`);
 };
 
-export const getOneItem = async (textSearch) => {
-  return await api.get(`${baseUrl}/items/${textSearch}`);
+export const getItemByID = async (itemID) => {
+  return await api.get(`${baseUrl}/items/${itemID}`);
+};
+
+export const getItemDescription = async (itemID) => {
+  return await api.get(`${baseUrl}/items/${itemID}/description`);
 };
