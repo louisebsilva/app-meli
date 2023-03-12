@@ -4,7 +4,7 @@ const BASE_URL = 'https://api.mercadolibre.com';
 
 const getProductList = async (req, resp) => {
   const textSearch = req.query.q;
-  const searchURLString = `${BASE_URL}/sites/MLA/search?q=${textSearch}&limit=50&offset=1`;
+  const searchURLString = `${BASE_URL}/sites/MLA/search?q=${textSearch}&limit=4&offset=1`;
 
   try {
     const result = await axios.get(searchURLString);
@@ -18,13 +18,12 @@ const getProductList = async (req, resp) => {
   }
 };
 
-const getOneItem = async (req, resp) => {
-  const searchID = 'MLA1283582331';
+const getItemByID = async (req, resp) => {
+  const searchID = req.params.id;
   const searchURLString = `${BASE_URL}/items/${searchID}`;
 
   try {
     const result = await axios.get(searchURLString);
-    console.log(result?.data);
     return resp.status(200).send({
       data: result?.data,
     });
@@ -36,12 +35,11 @@ const getOneItem = async (req, resp) => {
 };
 
 const getItemDescription = async (req, resp) => {
-  const searchID = 'MLA1283582331';
+  const searchID = req.params.id;
   const searchURLString = `${BASE_URL}/items/${searchID}/description`;
 
   try {
     const result = await axios.get(searchURLString);
-    console.log(result?.data);
     return resp.status(200).send({
       data: result?.data,
     });
@@ -54,6 +52,6 @@ const getItemDescription = async (req, resp) => {
 
 export const ProductData = {
   getProductList,
-  getOneItem,
+  getItemByID,
   getItemDescription,
 };
