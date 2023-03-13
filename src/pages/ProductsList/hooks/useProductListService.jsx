@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { getProductsList } from '../../../client';
 
@@ -6,7 +6,7 @@ const useProductsListService = (querySearch) => {
   const [productsList, setProductsList] = useState([]);
   const [loading, setLoading] = useState(false);
 
-  useEffect(() => {
+  const getProducts = useCallback(async (querySearch) => {
     setLoading(true);
     try {
       getProductsList(querySearch).then((result) => {
@@ -14,9 +14,13 @@ const useProductsListService = (querySearch) => {
       });
       setLoading(false);
     } catch (error) {
-      setProductsList([]);
+      setProductsList({});
       setLoading(false);
     }
+  }, []);
+
+  useEffect(() => {
+    getProducts(querySearch);
   }, []);
 
   return {

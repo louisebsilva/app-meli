@@ -4,7 +4,6 @@ import { formatPrice } from '../../../../utils/utils';
 import Loader from '../../../../components/Loader/Loader';
 import useProductDetailsService from './hooks/useProductDetailsService';
 import useProductDescriptionService from './hooks/useProductDescriptionService';
-
 import './styles.scss';
 
 const ProductDetails = () => {
@@ -17,7 +16,6 @@ const ProductDetails = () => {
   const { id, title, price, sold_quantity, condition, thumbnail } = details;
   const { description, loading: loadingDescription } =
     useProductDescriptionService(id);
-  console.log(id);
 
   return loadingDetails ? (
     <Loader />

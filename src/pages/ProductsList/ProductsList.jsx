@@ -1,13 +1,9 @@
 import React from 'react';
 import { useLocation } from 'react-router-dom';
-import useProductsListService from './hooks/useProductsListService';
+import useProductsListService from '../ProductsList/hooks/useProductListService';
 import Product from './Product/Product';
 import Loader from '../../components/Loader/Loader';
 import './styles.scss';
-
-const renderProductsList = (products) => {
-  return products.map((data) => <Product data={data} key={data?.id} />);
-};
 
 const ProductsList = () => {
   const location = useLocation();
@@ -16,7 +12,13 @@ const ProductsList = () => {
 
   return (
     <main className="product-list" data-testid="product-list">
-      {loading ? <Loader /> : renderProductsList(productsList)}
+      {productsList.length > 0 ? (
+        productsList.map((data) => <Product data={data} key={data?.id} />)
+      ) : loading ? (
+        <Loader />
+      ) : (
+        <p>No se encontraron productos</p>
+      )}
     </main>
   );
 };

@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import iconSearch from '../../images/icons-search.svg';
+import useProductsService from './hooks/useProductsService';
+import Loader from '../Loader/Loader';
 import './styles.scss';
 
 const renderDataResults = (data) => (
@@ -22,31 +24,18 @@ const renderDataResults = (data) => (
   </section>
 );
 
-const SearchBar = ({ placeholder, data }) => {
+const SearchBar = ({ placeholder }) => {
+  const location = useLocation();
   const [typedWord, setTypedWord] = useState('');
-  const [filteredData, setFilteredData] = useState([]);
-
-  const handleFilterData = (event) => {
-    event.preventDefault();
-    const typedWord = event.target.value;
-    const filteredDataItems = data?.data.filter((item) => {
-      return item?.title.toLowerCase().includes(typedWord.toLowerCase());
-    });
-
-    if (typedWord === '') {
-      setFilteredData([]);
-    } else {
-      setFilteredData(filteredDataItems);
-      setTypedWord(event.target.value);
-    }
-  };
+  const { productsList, loading } = useProductsService(typedWord);
 
   const handleButtonClick = (event) => {
-    event.preventDefault();
     setTypedWord(event.target.value);
   };
 
-  return (
+  return loading ? (
+    <Loader />
+  ) : (
     <div className="search-wrapper">
       <div className="search-bar">
         <input
@@ -54,7 +43,7 @@ const SearchBar = ({ placeholder, data }) => {
           data-testid="search-input"
           type="search"
           placeholder={placeholder}
-          onChange={handleFilterData}
+          onChange={(event) => setTypedWord(event.target.value)}
         />
 
         <button
@@ -70,14 +59,15 @@ const SearchBar = ({ placeholder, data }) => {
           </Link>
         </button>
       </div>
-      {filteredData.length != 0 && renderDataResults(filteredData)}
+      {productsList.length != 0 && !location.pathname.includes('items')
+        ? renderDataResults(productsList)
+        : null}
     </div>
   );
 };
 
 SearchBar.propTypes = {
   placeholder: PropTypes.string,
-  data: PropTypes.object,
 };
 
 export default SearchBar;
