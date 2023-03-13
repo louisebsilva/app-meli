@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
-import PropTypes from 'prop-types';
 import { getItemByID } from '../../client';
 import { formatPrice } from '../../utils/utils';
 import Loader from '../../components/Loader/Loader';
@@ -27,9 +26,6 @@ const ProductDetail = () => {
 
   const renderProductDetails = () => {
     const { title, price, sold_quantity, condition, thumbnail } = details;
-    if (loading) {
-      return <Loader />;
-    }
 
     return (
       <main className="wrapper" data-testid="product-details">
@@ -56,11 +52,7 @@ const ProductDetail = () => {
     );
   };
 
-  return renderProductDetails();
-};
-
-ProductDetail.propTypes = {
-  id: PropTypes.string,
+  return loading ? <Loader /> : renderProductDetails();
 };
 
 export default ProductDetail;

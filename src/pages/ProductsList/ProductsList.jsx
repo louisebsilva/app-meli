@@ -1,6 +1,5 @@
 import React from 'react';
 import { useLocation } from 'react-router-dom';
-import PropTypes from 'prop-types';
 import useProductsListService from './hooks/useProductsListService';
 import Product from '../Product/Product';
 import Loader from '../../components/Loader/Loader';
@@ -20,10 +19,6 @@ const ProductsList = () => {
       {loading ? <Loader /> : renderProductsList(productsList)}
     </main>
   );
-};
-
-ProductsList.propTypes = {
-  querySearch: PropTypes.string,
 };
 
 export default ProductsList;

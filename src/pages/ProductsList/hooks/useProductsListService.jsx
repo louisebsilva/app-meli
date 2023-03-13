@@ -10,7 +10,7 @@ const useProductsListService = (querySearch) => {
     setLoading(true);
     try {
       getProductsList(querySearch).then((result) => {
-        return setProductsList(result?.data?.data);
+        setProductsList(result?.data?.data);
       });
       setLoading(false);
     } catch (error) {
