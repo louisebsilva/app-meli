@@ -1,27 +1,36 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { useLocation } from 'react-router-dom';
-import { getItemByID } from '../../../../client';
 import { formatPrice } from '../../../../utils/utils';
 import Loader from '../../../../components/Loader/Loader';
+import useProductDetailsService from './hooks/useProductDetailsService';
+import useProductDescriptionService from './hooks/useProductDescriptionService';
+
 import './styles.scss';
 
-const renderProductDetails = (details) => {
-  const { title, price, sold_quantity, condition, thumbnail } = details;
+const ProductDetails = () => {
+  const location = useLocation();
+  const strippedURL = location.pathname.split('/');
 
-  return (
+  const { details, loading: loadingDetails } = useProductDetailsService(
+    strippedURL[2]
+  );
+  const { id, title, price, sold_quantity, condition, thumbnail } = details;
+  const { description, loading: loadingDescription } =
+    useProductDescriptionService(id);
+  console.log(id);
+
+  return loadingDetails ? (
+    <Loader />
+  ) : (
     <main className="wrapper" data-testid="product-details">
       <section className="thumbnail-description">
         <img src={thumbnail} className="thumbnail" />
-        {/* TODO = Get Description from the other endpoint */}
         <h2>Descripción del producto</h2>
-        <p className="description">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus
-          vestibulum malesuada sollicitudin. Sed pretium eu massa quis
-          scelerisque. Proin facilisis neque aliquam, congue massa nec,
-          condimentum purus. Maecenas at purus vel diam faucibus imperdiet.
-          Nullam ut enim nunc. Sed ut leo sit amet arcu vulputate vestibulum.
-          Proin ullamcorper ut quam eget rutrum.
-        </p>
+        {loadingDescription ? (
+          <Loader />
+        ) : Object.keys(description).length > 0 ? (
+          <p className="description">{description}</p>
+        ) : null}
       </section>
       <section className="price-section">
         <span>{`${condition} - ${sold_quantity} vendidos`}</span>
@@ -31,28 +40,6 @@ const renderProductDetails = (details) => {
       </section>
     </main>
   );
-};
-
-const ProductDetails = () => {
-  const [details, setDetails] = useState({});
-  const [loading, setLoading] = useState(false);
-  const location = useLocation();
-  const strippedURL = location.pathname.split('/');
-
-  useEffect(() => {
-    setLoading(true);
-    try {
-      getItemByID(strippedURL[2]).then((result) => {
-        setDetails(result?.data?.data);
-      });
-    } catch (error) {
-      setDetails({});
-      setLoading(false);
-    }
-    setLoading(false);
-  }, []);
-
-  return loading ? <Loader /> : renderProductDetails(details);
 };
 
 export default ProductDetails;
