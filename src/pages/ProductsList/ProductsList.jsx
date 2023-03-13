@@ -1,7 +1,7 @@
 import React from 'react';
 import { useLocation } from 'react-router-dom';
 import useProductsListService from './hooks/useProductsListService';
-import Product from '../Product/Product';
+import Product from './Product/Product';
 import Loader from '../../components/Loader/Loader';
 import './styles.scss';
 

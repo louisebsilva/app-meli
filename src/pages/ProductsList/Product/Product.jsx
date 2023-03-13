@@ -1,7 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import { formatPrice } from '../../utils/utils';
+import { formatPrice } from '../../../utils/utils';
 import './styles.scss';
 
 const Product = ({ data }) => {

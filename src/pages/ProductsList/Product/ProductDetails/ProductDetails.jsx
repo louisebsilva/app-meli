@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
-import { getItemByID } from '../../client';
-import { formatPrice } from '../../utils/utils';
-import Loader from '../../components/Loader/Loader';
+import { getItemByID } from '../../../../client';
+import { formatPrice } from '../../../../utils/utils';
+import Loader from '../../../../components/Loader/Loader';
 import './styles.scss';
 
 const renderProductDetails = (details) => {
