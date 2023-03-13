@@ -7,6 +7,7 @@
     margin-bottom: 20px;
     padding-left: 20px;
     min-height: 150px;
+    margin-top: 50px;
 
     &:hover {
         cursor: pointer;
@@ -14,10 +15,10 @@
     }
 }
 
-.thumbnail {
-    flex-basis: 120px;
-    flex-shrink: 1;
-    margin-right: 10px;
+.product-thumbnail {
+    max-width: 150px;
+    height: 150px;
+    margin-right: 20px;
 }
 
 .section-detail {
@@ -39,4 +40,11 @@
     flex-basis: 400px;
     text-align: center;
     color: #a8a9aa;
+}
+
+@media (max-width: 600px) {
+    .product-thumbnail {
+        max-width: 100px;
+        height: 100px;
+    }
 }

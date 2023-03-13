@@ -15,7 +15,7 @@ const Product = ({ data }) => {
       onClick={() => navigate(`/items/${id}`)}
     >
       <img
-        className="thumbnail"
+        className="product-thumbnail"
         data-testid="thumbnail"
         src={thumbnail}
         alt="product image"
