@@ -10,17 +10,19 @@ h2 {
     margin: auto;
 }
 
-.thumbnail-description {
+.picture-description {
     display: flex;
     flex-direction: column;
     flex-shrink: 1;
-    width: 70%;
-    padding: 2em;
+    width: 60%;
+    padding-left: 2em;
+    padding-top: 2em;
 }
 
-.thumbnail {
-    width: 70%;
+.picture {
+    width: 60%;
     padding-left: 50px;
+    margin-bottom: 30px;
 }
 
 .description {

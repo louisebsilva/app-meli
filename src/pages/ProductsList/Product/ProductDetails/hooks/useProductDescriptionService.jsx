@@ -11,8 +11,8 @@ const useProductDescription = (id) => {
     try {
       getItemDescription(id).then((result) => {
         setDescription(result?.data?.data?.plain_text);
+        setLoading(false);
       });
-      setLoading(false);
     } catch (error) {
       setDescription({});
       setLoading(false);

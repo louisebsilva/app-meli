@@ -11,8 +11,8 @@ const useProductsListService = (querySearch) => {
     try {
       getProductsList(querySearch).then((result) => {
         setProductsList(result?.data?.data);
+        setLoading(false);
       });
-      setLoading(false);
     } catch (error) {
       setProductsList({});
       setLoading(false);

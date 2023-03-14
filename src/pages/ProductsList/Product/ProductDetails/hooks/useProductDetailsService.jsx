@@ -11,8 +11,8 @@ const useProductDetailsService = (url) => {
     try {
       getItemByID(url).then((result) => {
         setDetails(result?.data?.data);
+        setLoading(false);
       });
-      setLoading(false);
     } catch (error) {
       setDetails({});
       setLoading(false);

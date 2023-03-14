@@ -11,7 +11,7 @@ const ProductsList = () => {
   const { productsList, loading } = useProductsListService(querySearch);
 
   return (
-    <main className="product-list" data-testid="product-list">
+    <main className={loading ? '' : 'product-list'} data-testid="product-list">
       {productsList.length > 0 ? (
         productsList.map((data) => <Product data={data} key={data?.id} />)
       ) : loading ? (

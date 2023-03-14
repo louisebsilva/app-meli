@@ -4,6 +4,14 @@
     margin: auto;
 }
 
+.nothing-found {
+    background-color: #edeeef;
+    height: 50px;
+    text-align: center;
+    margin-top: 100px;
+    font-size: 1.5em;
+}
+
 @media (max-width: 600px) {
     .product-list {
         width: 95%;
