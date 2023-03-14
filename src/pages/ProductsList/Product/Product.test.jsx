@@ -21,5 +21,3 @@ describe('Product component', () => {
     expect(screen.getByTestId('address-info')).toBeInTheDocument();
   });
 });
-
-// Pegar o texto que aparece na tela, pelo getByText

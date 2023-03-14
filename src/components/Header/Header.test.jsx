@@ -7,5 +7,8 @@ describe('Header Component', () => {
     render(<Header />, { wrapper: BrowserRouter });
     expect(screen.getByTestId('navbar')).toBeInTheDocument();
     expect(screen.getByTestId('logo')).toBeInTheDocument();
+    expect(
+      screen.getByPlaceholderText('Nunca dejes de buscar')
+    ).toBeInTheDocument();
   });
 });
