@@ -24,7 +24,7 @@ const ProductDetails = () => {
   ) : Object.keys(details).length > 0 ? (
     <main className="wrapper" data-testid="product-details">
       <section className="picture-description">
-        <img src={pictures[0]?.url} className="picture" />
+        <img src={pictures[0]?.url} alt="Product image" className="picture" />
         <h2>Descripción del producto</h2>
         {loadingDescription ? (
           <Loader />
@@ -38,7 +38,9 @@ const ProductDetails = () => {
         <span>{`${condition} - ${sold_quantity} vendidos`}</span>
         <h2>{title}</h2>
         <p>{formatPrice(price)}</p>
-        <button>Comprar</button>
+        <button role="button" aria-label="Buy product">
+          Comprar
+        </button>
       </section>
     </main>
   ) : (

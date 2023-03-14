@@ -50,12 +50,20 @@ const SearchBar = ({ placeholder }) => {
           className="search-button"
           data-testid="search-button"
           onClick={handleButtonClick}
+          role="button"
+          aria-label="Search"
         >
           <Link
             to={`/items?search=${typedWord}`}
             state={{ querySearch: typedWord }}
+            aria-label="Search for the item written"
           >
-            <img src={iconSearch} data-testid="icon-search" />
+            <img
+              src={iconSearch}
+              className="icon-search"
+              data-testid="icon-search"
+              alt="search icon"
+            />
           </Link>
         </button>
       </div>
