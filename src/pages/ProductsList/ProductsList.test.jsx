@@ -3,7 +3,7 @@ import { BrowserRouter } from 'react-router-dom';
 import { createBrowserHistory } from 'history';
 import ProductsList from './ProductsList';
 
-describe('Products List component', () => {
+describe('ProductsList page', () => {
   it('should render ProductList page correctly', () => {
     const history = createBrowserHistory();
 

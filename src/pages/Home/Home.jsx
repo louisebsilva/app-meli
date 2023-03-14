@@ -1,3 +1,3 @@
-const Home = () => <>{/* TODO: Show products  */}</>;
+const Home = () => <></>;
 
 export default Home;

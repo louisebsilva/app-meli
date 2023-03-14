@@ -19,32 +19,42 @@ const ProductDetails = () => {
   const { description, loading: loadingDescription } =
     useProductDescriptionService(id);
 
-  return loadingDetails ? (
-    <Loader />
-  ) : Object.keys(details).length > 0 ? (
-    <main className="wrapper" data-testid="product-details">
-      <section className="picture-description">
-        <img src={pictures[0]?.url} alt="Product image" className="picture" />
-        <h2>Descripción del producto</h2>
-        {loadingDescription ? (
-          <Loader />
-        ) : Object.keys(description).length > 0 ? (
-          <p className="description">{description}</p>
-        ) : (
-          <p className="description">No hay descripción para este producto.</p>
-        )}
-      </section>
-      <section className="price-section">
-        <span>{`${condition} - ${sold_quantity} vendidos`}</span>
-        <h2>{title}</h2>
-        <p>{formatPrice(price)}</p>
-        <button role="button" aria-label="Buy product">
-          Comprar
-        </button>
-      </section>
+  return (
+    <main data-testid="product-details">
+      {loadingDetails ? (
+        <Loader />
+      ) : Object.keys(details).length > 0 ? (
+        <div className="wrapper">
+          <section className="picture-description">
+            <img
+              src={pictures[0]?.url}
+              alt="Product image"
+              className="picture"
+            />
+            <h2>Descripción del producto</h2>
+            {loadingDescription ? (
+              <Loader />
+            ) : Object.keys(description).length > 0 ? (
+              <p className="description">{description}</p>
+            ) : (
+              <p className="description">
+                No hay descripción para este producto.
+              </p>
+            )}
+          </section>
+          <section className="price-section">
+            <span>{`${condition} - ${sold_quantity} vendidos`}</span>
+            <h2>{title}</h2>
+            <p>{formatPrice(price)}</p>
+            <button role="button" aria-label="Buy product">
+              Comprar
+            </button>
+          </section>
+        </div>
+      ) : (
+        <p className="nothing-found">No se encontraron productos</p>
+      )}
     </main>
-  ) : (
-    <p className="nothing-found">No se encontraron productos</p>
   );
 };
 
