@@ -39,9 +39,10 @@
     flex-basis: 400px;
     text-align: center;
     color: #a8a9aa;
+    padding-right: 10px;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 700px) {
     .product-thumbnail {
         max-width: 100px;
         height: 100px;

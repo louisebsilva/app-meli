@@ -8,7 +8,7 @@ import './styles.scss';
 
 const renderDataResults = (data) => (
   <section className="data-results" data-testid="data-results">
-    {data.map((item, key) => {
+    {data.slice(0, 4).map((item, key) => {
       return (
         <p key={key}>
           <Link
