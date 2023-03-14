@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import ReactPaginate from 'react-paginate';
-import useProductsListService from '../ProductsList/hooks/useProductListService';
+import useProductsListService from '../ProductsList/hooks/useProductsListService';
 import Product from './Product/Product';
 import Loader from '../../components/Loader/Loader';
 import './styles.scss';
