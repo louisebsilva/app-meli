@@ -3,6 +3,7 @@ import Home from './pages/Home/Home';
 import Header from './components/Header/Header';
 import ProductsList from './pages/ProductsList/ProductsList';
 import ProductDetails from './pages/ProductsList/Product/ProductDetails/ProductDetails';
+import NotFound from './pages/NotFound/NotFound';
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/items" element={<ProductsList />} />
         <Route path="/items/:id" element={<ProductDetails />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
   );
